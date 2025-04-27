@@ -45,5 +45,5 @@ Use, distribution, or modification without explicit permission is strictly prohi
 
 For license requests, please visit [https://flowaxy.com](https://flowaxy.com) or contact us at [flowaxy.dev@gmail.com](mailto:flowaxy.dev@gmail.com).
 
-GitHub repository: [https://github.com/flowaxy](https://github.com/flowaxy)
+GitHub repository: [https://github.com/flowaxy/application](https://github.com/flowaxy/application)
 
