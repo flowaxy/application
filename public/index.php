@@ -10,5 +10,4 @@ require __DIR__ . '/../vendor/autoload.php';
 
 # Run the application
 $app = new App();
-
 $app->run();

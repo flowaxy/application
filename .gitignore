@@ -17,3 +17,9 @@ composer.lock
 
 # OpenServer
 .osp/
+
+# Test/Sandbox
+/public/sandbox
+
+# Logs
+/storage/logs/
