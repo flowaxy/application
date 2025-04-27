@@ -1,0 +1,19 @@
+# System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+
+# Composer
+/vendor
+composer.lock
+
+# Environment
+.env
+
+# PHP-CS-Fixer cache
+.php-cs-fixer.cache
+
+# OpenServer
+.osp/

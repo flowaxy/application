@@ -1,0 +1,52 @@
+{
+    "name": "flowaxy/application",
+    "description": "Flowaxy CMS starter project",
+    "type": "project",
+    "license": "UNLICENSED",
+    "keywords": [
+        "flowaxy",
+        "web",
+        "development",
+        "custom",
+        "studio"
+    ],
+    "homepage": "https://flowaxy.com",
+    "authors": [
+        {
+            "name": "Flowaxy Studio",
+            "email": "studio@flowaxy.com",
+            "homepage": "https://flowaxy.com",
+            "role": "Agency"
+        },
+        {
+            "name": "iTeffa",
+            "email": "iteffa@flowaxy.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@flowaxy.com",
+        "issues": "https://github.com/flowaxy/application/issues",
+        "source": "https://github.com/flowaxy/application"
+    },
+    "require": {
+        "php": ">=8.2.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.75"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": {
+            "php": "8.2.0"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
