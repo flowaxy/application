@@ -81,4 +81,17 @@ class DatabaseService
         return $stmt->fetchAll();
     }
 
+    /**
+     * Executes a query and returns a single column value.
+     *
+     * @param string $query The SQL query to execute.
+     * @param array $params Query parameters.
+     * @return mixed The value of the first column of the first row.
+     */
+    public function fetchColumn(string $query, array $params = []): mixed
+    {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
+    }
 }
