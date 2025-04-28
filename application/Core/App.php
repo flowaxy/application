@@ -130,7 +130,13 @@ class App
     }
 
     /**
-     * Simple dependency container (Get service).
+     * Register all service providers.
+     */
+    protected function registerProviders(): void
+    {
+        (new RouteServiceProvider())->register();
+    }
+
      */
     public static function get(string $key): mixed
     {
