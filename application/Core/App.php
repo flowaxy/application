@@ -137,6 +137,13 @@ class App
         (new RouteServiceProvider())->register();
     }
 
+    /**
+     * Register all global middlewares.
+     */
+    protected function registerMiddlewares(): void
+    {
+        $this->middlewares[] = new \Application\Middlewares\ExampleMiddleware();
+    }
      */
     public static function get(string $key): mixed
     {
