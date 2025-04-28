@@ -94,4 +94,19 @@ class DatabaseService
         $stmt->execute($params);
         return $stmt->fetchColumn();
     }
+
+    /**
+     * Inserts a new record and returns the last inserted ID.
+     *
+     * @param string $query The SQL insert query.
+     * @param array $params Query parameters.
+     * @return int The ID of the newly inserted record.
+     */
+    public function insert(string $query, array $params = []): int
+    {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute($params);
+        return (int) $this->connection->lastInsertId();
+    }
+
 }
