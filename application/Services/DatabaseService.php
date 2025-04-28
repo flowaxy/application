@@ -53,4 +53,17 @@ class DatabaseService
         }
     }
 
+    /**
+     * Executes a query and returns the first row.
+     *
+     * @param string $query The SQL query to execute.
+     * @param array $params Query parameters.
+     * @return array|null The first result row or null if none found.
+     */
+    public function fetchOne(string $query, array $params = []): ?array
+    {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetch() ?: null;
+    }
 }
