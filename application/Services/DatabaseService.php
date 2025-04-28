@@ -109,4 +109,17 @@ class DatabaseService
         return (int) $this->connection->lastInsertId();
     }
 
+    /**
+     * Executes an update or delete query.
+     *
+     * @param string $query The SQL query to execute.
+     * @param array $params Query parameters.
+     * @return bool True if the query was successful, false otherwise.
+     */
+    public function execute(string $query, array $params = []): bool
+    {
+        $stmt = $this->connection->prepare($query);
+        return $stmt->execute($params);
+    }
+
 }
