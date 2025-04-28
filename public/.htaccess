@@ -1,0 +1,28 @@
+# Set default character encoding to UTF-8
+AddDefaultCharset UTF-8
+
+# Specify the default index file and disable directory listing
+DirectoryIndex index.php
+Options -Indexes
+
+<IfModule mod_headers.c>
+  # Set a secure Referrer Policy
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # If the file or directory exists, serve it directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # Otherwise, route all requests to index.php
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+<IfModule mod_php.c>
+  # PHP settings
+  php_value register_globals 0
+  php_value magic_quotes_gpc 0
+  php_value session.use_trans_sid 1
+  php_value session.cookie_lifetime 0
+</IfModule>
