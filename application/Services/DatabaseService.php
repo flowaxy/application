@@ -122,4 +122,29 @@ class DatabaseService
         return $stmt->execute($params);
     }
 
+    /**
+     * Executes raw SQL commands from a file.
+     *
+     * @param string $filePath Path to the SQL file.
+     * @return bool True if the file was executed successfully, false otherwise.
+     */
+    public function executeSqlFile(string $filePath): bool
+    {
+        if (!file_exists($filePath)) {
+            $this->logger->warning('SQL file not found.', ['file' => $filePath]);
+            return false;
+        }
+
+        $sql = file_get_contents($filePath);
+        $statements = array_filter(array_map('trim', explode(';', $sql)));
+
+        foreach ($statements as $statement) {
+            if (!empty($statement)) {
+                $this->execute($statement);
+            }
+        }
+
+        $this->logger->info('SQL file executed successfully.', ['file' => $filePath]);
+        return true;
+    }
 }
