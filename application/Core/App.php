@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Application\Core;
 
+use Application\Services\DatabaseService;
+use Application\Services\LoggerService;
+
 /**
  * Class App
  *
@@ -11,6 +14,9 @@ namespace Application\Core;
  */
 class App
 {
+    private DatabaseService $db;
+    private LoggerService $logger;
+
     /**
      * App constructor.
      *
@@ -79,7 +85,12 @@ class App
      */
     protected function connectDatabase(): void
     {
-        // TODO: Database::connect();
+        try {
+            $this->db = new DatabaseService();
+        } catch (\PDOException $e) {
+            echo 'Failed to connect to the database.';
+            exit(1);
+        }
     }
 
     /**
@@ -89,13 +100,11 @@ class App
      */
     protected function registerServices(): void
     {
-        // TODO: Register service providers (e.g., AuthServiceProvider, EventServiceProvider)
+        $this->logger = new LoggerService('application/register');
     }
 
     /**
      * Load application route definitions.
-     *
-     * (Currently a placeholder for future route loading.)
      */
     protected function loadRoutes(): void
     {
