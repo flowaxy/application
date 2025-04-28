@@ -31,7 +31,8 @@ class App
     {
         $this->loadEnvironment();
         $this->loadHelperFunctions();
-        $this->connectDatabase();      // (Optional: stub for future)
+        ErrorHandler::register();
+        $this->connectDatabase();
         $this->registerServices();
         $this->loadRoutes();
     }
@@ -101,13 +102,16 @@ class App
     protected function registerServices(): void
     {
         $this->logger = new LoggerService('application/register');
+
+        self::set(LoggerService::class, $this->logger);
+        self::set(DatabaseService::class, $this->db);
     }
 
     /**
-     * Load application route definitions.
+     * Simple dependency container (Get service).
      */
-    protected function loadRoutes(): void
+    public static function get(string $key): mixed
     {
-        // TODO: Load route files from /routes directory
+        return self::$container[$key] ?? null;
     }
 }
