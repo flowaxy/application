@@ -40,11 +40,33 @@ class App
     /**
      * Run the application.
      *
-     * Dispatches the current HTTP request.
+     * Executes the middleware stack and dispatches the router.
      */
     public function run(): void
     {
-        // TODO: Implement request dispatcher (e.g., Router::dispatch())
+        $dispatcher = array_reduce(
+            array_reverse($this->middlewares),
+            function ($next, MiddlewareInterface $middleware) {
+                return fn() => $middleware->handle($next);
+            },
+            function () {
+                /** @var Router|null $router */
+                $router = self::get(Router::class);
+
+                $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+                $uri = strtok($_SERVER['REQUEST_URI'] ?? '/', '?');
+
+                if (!$router) {
+                    http_response_code(500);
+                    echo 'Router not found.';
+                    return;
+                }
+
+                $router->dispatch($method, $uri);
+            }
+        );
+
+        $dispatcher();
     }
 
     /**
