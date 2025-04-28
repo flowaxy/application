@@ -7,7 +7,7 @@ namespace Application\Services;
 /**
  * Class LoggerService
  *
- * Advanced logger for writing log messages by levels, 
+ * Advanced logger for writing log messages by levels,
  * depending on the application environment settings.
  *
  * @package Application\Services
@@ -41,7 +41,7 @@ class LoggerService
      */
     public function __construct(string $type = 'app')
     {
-        $this->type = $type;
+        $this->type = trim($type, '/');
         $this->basePath = dirname(__DIR__, 2) . '/storage/logs/' . $this->type;
         $this->prepareDirectory();
         $this->logPath = $this->basePath . '/' . date('Y-m-d') . '.log';
@@ -58,7 +58,9 @@ class LoggerService
     protected function prepareDirectory(): void
     {
         if (!is_dir($this->basePath)) {
-            mkdir($this->basePath, 0777, true);
+            if (!mkdir($this->basePath, 0777, true) && !is_dir($this->basePath)) {
+                throw new \RuntimeException(sprintf('Directory "%s" could not be created.', $this->basePath));
+            }
         }
     }
 

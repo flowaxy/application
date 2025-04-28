@@ -6,7 +6,7 @@ declare(strict_types=1);
 use Application\Core\App;
 
 # Autoload Composer dependencies
-require __DIR__ . '/../vendor/autoload.php';
+require dirname(__DIR__, 1) . '/vendor/autoload.php';
 
 # Run the application
 $app = new App();
