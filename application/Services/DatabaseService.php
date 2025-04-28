@@ -66,4 +66,19 @@ class DatabaseService
         $stmt->execute($params);
         return $stmt->fetch() ?: null;
     }
+
+    /**
+     * Executes a query and returns all rows.
+     *
+     * @param string $query The SQL query to execute.
+     * @param array $params Query parameters.
+     * @return array List of all result rows.
+     */
+    public function fetchAll(string $query, array $params = []): array
+    {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+    }
+
 }
