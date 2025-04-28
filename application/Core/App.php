@@ -6,6 +6,9 @@ namespace Application\Core;
 
 use Application\Services\DatabaseService;
 use Application\Services\LoggerService;
+use Application\Providers\RouteServiceProvider;
+use Application\Middlewares\MiddlewareInterface;
+use Application\Routing\Router;
 
 /**
  * Class App
@@ -16,16 +19,13 @@ class App
 {
     private DatabaseService $db;
     private LoggerService $logger;
+    private static array $container = [];
+    private array $middlewares = [];
 
     /**
      * App constructor.
      *
-     * Initializes the application:
-     * - Loads environment variables
-     * - Loads global helper functions
-     * - Connects to the database (TODO)
-     * - Registers services (TODO)
-     * - Loads application routes (TODO)
+     * Initializes the application components.
      */
     public function __construct()
     {
@@ -34,7 +34,8 @@ class App
         ErrorHandler::register();
         $this->connectDatabase();
         $this->registerServices();
-        $this->loadRoutes();
+        $this->registerProviders();
+        $this->registerMiddlewares();
     }
 
     /**
@@ -70,7 +71,7 @@ class App
     }
 
     /**
-     * Load environment variables.
+     * Load environment variables from .env file.
      */
     protected function loadEnvironment(): void
     {
@@ -79,8 +80,6 @@ class App
 
     /**
      * Load all global helper functions.
-     *
-     * Recursively loads all PHP files from Helpers/Functions directory.
      */
     protected function loadHelperFunctions(): void
     {
@@ -103,23 +102,19 @@ class App
 
     /**
      * Connect to the database.
-     *
-     * (Currently a placeholder for future database connection logic.)
      */
     protected function connectDatabase(): void
     {
         try {
             $this->db = new DatabaseService();
         } catch (\PDOException $e) {
-            echo 'Failed to connect to the database.';
+            echo 'Failed to connect to the database: ' . $e->getMessage();
             exit(1);
         }
     }
 
     /**
-     * Register core application services.
-     *
-     * (Currently a placeholder for future service registration.)
+     * Register core application services into the container.
      */
     protected function registerServices(): void
     {
@@ -155,6 +150,12 @@ class App
     {
         self::$container[$key] = $value;
     }
+
+    /**
+     * Retrieve a service from the container.
+     *
+     * @param string $key
+     * @return mixed|null
      */
     public static function get(string $key): mixed
     {
