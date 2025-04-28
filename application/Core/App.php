@@ -144,6 +144,17 @@ class App
     {
         $this->middlewares[] = new \Application\Middlewares\ExampleMiddleware();
     }
+
+    /**
+     * Store a service in the container.
+     *
+     * @param string $key
+     * @param mixed $value
+     */
+    public static function set(string $key, mixed $value): void
+    {
+        self::$container[$key] = $value;
+    }
      */
     public static function get(string $key): mixed
     {
