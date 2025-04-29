@@ -26,6 +26,7 @@
     <!-- Main Welcome Message -->
     <p>Congratulations! 🎉 You have successfully launched your first website using your framework!</p>
     <p>Now you can create new pages, routes, and grow your project.</p>
+    <p><a href="/cabinet/auth">Личный кабинет</a> | <a href="/manager/auth">Панель администратора</a></p>
 
 </body>
 
