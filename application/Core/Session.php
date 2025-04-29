@@ -34,4 +34,17 @@ class Session
         }
     }
 
+    /**
+     * Stores a value in the session under the specified key.
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public static function set(string $key, mixed $value): void
+    {
+        self::start();
+        $_SESSION[$key] = $value;
+    }
+
 }
