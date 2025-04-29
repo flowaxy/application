@@ -145,4 +145,14 @@ class Session
         return self::has(self::CSRF_TOKEN_KEY) && hash_equals(self::get(self::CSRF_TOKEN_KEY), $token);
     }
 
+    /**
+     * Regenerates the session ID to help prevent session fixation attacks.
+     *
+     * @return void
+     */
+    public static function regenerate(): void
+    {
+        self::start();
+        session_regenerate_id(true);
+    }
 }
