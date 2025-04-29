@@ -47,4 +47,17 @@ class Session
         $_SESSION[$key] = $value;
     }
 
+    /**
+     * Retrieves a value from the session by key.
+     *
+     * @param string $key
+     * @param mixed|null $default Value to return if the key is not found.
+     * @return mixed
+     */
+    public static function get(string $key, mixed $default = null): mixed
+    {
+        self::start();
+        return $_SESSION[$key] ?? $default;
+    }
+
 }
