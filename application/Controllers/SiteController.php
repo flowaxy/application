@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace Application\Controllers;
 
+use Application\Core\BaseController;
+
 /**
  * Class SiteController
  *
- * Handles the main site pages.
+ * Handles the main site routes and displays the homepage.
+ *
+ * @package Application\Controllers
  */
-class SiteController
+class SiteController extends BaseController
 {
     /**
-     * Display the homepage.
+     * Displays the homepage view.
      *
      * @return void
      */
     public function index(): void
     {
-        $title = 'Welcome to the framework';
-
-        // Render the 'site.index' view with the provided title
-        view('site.index', ['title' => $title]);
+        $this->view('site/index', ['title' => 'Welcome to the framework']);
     }
 }
