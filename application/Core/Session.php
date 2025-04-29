@@ -72,4 +72,16 @@ class Session
         unset($_SESSION[$key]);
     }
 
+    /**
+     * Checks if a given key exists in the session.
+     *
+     * @param string $key
+     * @return bool
+     */
+    public static function has(string $key): bool
+    {
+        self::start();
+        return isset($_SESSION[$key]);
+    }
+
 }
