@@ -22,4 +22,16 @@ class Session
      */
     private const CSRF_TOKEN_KEY = '_csrf_token';
 
+    /**
+     * Starts the session if it has not already been started.
+     *
+     * @return void
+     */
+    private static function start(): void
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
 }
