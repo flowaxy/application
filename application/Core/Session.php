@@ -98,4 +98,23 @@ class Session
         $_SESSION[self::FLASH_KEY][$key] = $message;
     }
 
+    /**
+     * Retrieves a flash message by key and removes it from the session.
+     *
+     * @param string $key
+     * @param mixed|null $default Value to return if the key is not found.
+     * @return mixed
+     */
+    public static function getFlash(string $key, mixed $default = null): mixed
+    {
+        self::start();
+        $message = $_SESSION[self::FLASH_KEY][$key] ?? $default;
+
+        if (isset($_SESSION[self::FLASH_KEY][$key])) {
+            unset($_SESSION[self::FLASH_KEY][$key]);
+        }
+
+        return $message;
+    }
+
 }
