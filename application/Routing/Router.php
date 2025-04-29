@@ -7,46 +7,10 @@ namespace Application\Routing;
 /**
  * Class Router
  *
- * Simple router class for handling HTTP requests.
+ * Simple router class for handling HTTP requests with support for middleware and config-based routing.
  */
 class Router
 {
-    protected array $routes = [];
-
-    /**
-     * Register a GET route.
-     *
-     * @param string $uri
-     * @param array $action
-     */
-    public function get(string $uri, array $action): void
-    {
-        $this->addRoute('GET', $uri, $action);
-    }
-
-    /**
-     * Register a POST route.
-     *
-     * @param string $uri
-     * @param array $action
-     */
-    public function post(string $uri, array $action): void
-    {
-        $this->addRoute('POST', $uri, $action);
-    }
-
-    /**
-     * Add a new route.
-     *
-     * @param string $method
-     * @param string $uri
-     * @param array $action
-     */
-    protected function addRoute(string $method, string $uri, array $action): void
-    {
-        $this->routes[$method][$uri] = $action;
-    }
-
     /**
      * Dispatch the incoming request.
      *
@@ -55,27 +19,42 @@ class Router
      */
     public function dispatch(string $method, string $uri): void
     {
+        // Remove query string
         $uri = parse_url($uri, PHP_URL_PATH);
+        // Load route definitions
+        $routes = require base_path('/routes/web.php');
 
-        if (isset($this->routes[$method][$uri])) {
-            [$controller, $methodAction] = $this->routes[$method][$uri];
+        // Support both exact route (e.g. '/') and method-prefixed routes (e.g. 'GET@/cabinet')
+        $key = strtoupper($method) . '@' . $uri;
+        $route = $routes[$key] ?? $routes[$uri] ?? null;
 
-            $controllerInstance = new $controller();
-            call_user_func([$controllerInstance, $methodAction]);
+        if (!$route) {
+            http_response_code(404);
+            $errorPage = base_path('resources/views/errors/404.php');
+
+            if (file_exists($errorPage)) {
+                require $errorPage;
+            } else {
+                echo "<h1>404 Not Found</h1>";
+            }
 
             return;
         }
 
-        // If route not found, render 404
-        http_response_code(404);
+        [$controllerClass, $methodName, $middlewares] = array_pad($route, 3, []);
 
-        $errorPage = dirname(__DIR__, 2) . '/resources/views/errors/404.php';
-        if (file_exists($errorPage)) {
-            require $errorPage;
-        } else {
-            echo "<h1>404 Not Found</h1>";
-        }
+        // Build middleware chain
+        $middlewareChain = array_reduce(
+            array_reverse($middlewares),
+            function ($next, $middlewareClass) {
+                return fn() => (new $middlewareClass())->handle($next);
+            },
+            function () use ($controllerClass, $methodName) {
+                $controller = new $controllerClass();
+                call_user_func([$controller, $methodName]);
+            }
+        );
 
-        exit;
+        $middlewareChain();
     }
 }
