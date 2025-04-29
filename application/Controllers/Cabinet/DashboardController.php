@@ -9,9 +9,10 @@ class DashboardController extends BaseController
 {
     public function index(): void
     {
-        // if (!Session::has('cabinet_user_id')) {
-        //     $this->redirect('/cabinet/login');
-        // }
+        if (!Session::has('cabinet_user_id')) {
+            $this->redirect('/cabinet/login');
+        }
+
         $this->view('cabinet/index');
     }
 }
