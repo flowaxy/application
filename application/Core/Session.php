@@ -17,4 +17,9 @@ class Session
      */
     private const FLASH_KEY = '_flash';
 
+    /**
+     * Key used for storing the CSRF token in the session.
+     */
+    private const CSRF_TOKEN_KEY = '_csrf_token';
+
 }
