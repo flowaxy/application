@@ -60,4 +60,16 @@ class Session
         return $_SESSION[$key] ?? $default;
     }
 
+    /**
+     * Removes a key and its associated value from the session.
+     *
+     * @param string $key
+     * @return void
+     */
+    public static function remove(string $key): void
+    {
+        self::start();
+        unset($_SESSION[$key]);
+    }
+
 }
