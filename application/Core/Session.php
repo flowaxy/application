@@ -84,4 +84,18 @@ class Session
         return isset($_SESSION[$key]);
     }
 
+    /**
+     * Stores a flash message in the session.
+     * Flash messages are removed after being read once.
+     *
+     * @param string $key
+     * @param mixed $message
+     * @return void
+     */
+    public static function flash(string $key, mixed $message): void
+    {
+        self::start();
+        $_SESSION[self::FLASH_KEY][$key] = $message;
+    }
+
 }
