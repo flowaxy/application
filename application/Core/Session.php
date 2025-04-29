@@ -133,4 +133,16 @@ class Session
         return self::get(self::CSRF_TOKEN_KEY);
     }
 
+    /**
+     * Validates a CSRF token against the one stored in the session.
+     *
+     * @param string $token
+     * @return bool
+     */
+    public static function checkToken(string $token): bool
+    {
+        self::start();
+        return self::has(self::CSRF_TOKEN_KEY) && hash_equals(self::get(self::CSRF_TOKEN_KEY), $token);
+    }
+
 }
