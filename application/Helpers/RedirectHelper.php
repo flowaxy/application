@@ -13,4 +13,21 @@ use Application\Core\Session;
  */
 class RedirectHelper
 {
+    /**
+     * Redirects the user to a specified URL and optionally sets a flash message.
+     *
+     * @param string $url The URL to redirect to.
+     * @param string $message Optional message to be stored in session as flash data.
+     * @param string $type The flash message type (e.g., 'error', 'success').
+     * @return void
+     */
+    public static function redirect(string $url, string $message = '', string $type = 'error'): void
+    {
+        if ($message !== '') {
+            Session::flash($type, $message);
+        }
+        header('Location: ' . $url);
+        exit;
+    }
+
 }
