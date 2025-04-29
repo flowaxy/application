@@ -12,4 +12,9 @@ namespace Application\Core;
  */
 class Session
 {
+    /**
+     * Key used for storing flash messages in the session.
+     */
+    private const FLASH_KEY = '_flash';
+
 }
