@@ -117,4 +117,20 @@ class Session
         return $message;
     }
 
+    /**
+     * Generates and stores a CSRF token if it doesn't already exist.
+     *
+     * @return string The CSRF token.
+     * @throws \Exception If random_bytes fails.
+     */
+    public static function generateToken(): string
+    {
+        self::start();
+        if (!isset($_SESSION[self::CSRF_TOKEN_KEY])) {
+            self::set(self::CSRF_TOKEN_KEY, bin2hex(random_bytes(32)));
+        }
+
+        return self::get(self::CSRF_TOKEN_KEY);
+    }
+
 }
