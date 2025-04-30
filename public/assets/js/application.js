@@ -326,3 +326,20 @@ if (fm) {
     });
 }
 
+/**
+ * 6. Кнопка прокрутки вгору (Scroll to Top)
+ */
+
+var scrollTopBtn = document.querySelector(".scrolltotop");
+
+if (scrollTopBtn) {
+    // Показати/сховати кнопку
+    window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 700) { // 700px from top
+            scrollTopBtn.classList.add("scrolltotop-show");
+        } else {
+            scrollTopBtn.classList.remove("scrolltotop-show");
+        }
+    });
+}
+
