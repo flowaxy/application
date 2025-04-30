@@ -472,3 +472,72 @@ if (masonryGrid) {
     });
 }
 
+/**
+ * 12. Lightbox (Відкриття зображень та відео в модальному вікні)
+ */
+
+// Зображення
+var $lightboxImage = $(".lightbox-image-link, .lightbox-image-box");
+
+$lightboxImage.each(function () {
+    var $this = $(this);
+    $this.magnificPopup({
+        type: 'image',
+        fixedContentPos: false,
+        removalDelay: 200,
+        closeOnContentClick: true,
+        image: {
+            titleSrc: 'data-image-title'
+        }
+    });
+});
+
+// Медіа (YouTube, Vimeo)
+var $lightboxMedia = $(".lightbox-media-link, .lightbox-media-box");
+
+$lightboxMedia.each(function () {
+    var $this = $(this);
+    $this.magnificPopup({
+        type: "iframe",
+        fixedContentPos: false,
+        removalDelay: 200,
+        preloader: false,
+        iframe: {
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: '//www.youtube.com/embed/%id%?autoplay=1&rel=0'
+                },
+                vimeo: {
+                    index: 'vimeo.com/',
+                    id: '/',
+                    src: '//player.vimeo.com/video/%id%?autoplay=1'
+                }
+            },
+            srcAction: "iframe_src"
+        }
+    });
+});
+
+// Галерея
+var $gallery = $(".gallery-wrapper");
+
+if ($gallery.length) {
+    $gallery.each(function () {
+        var $this = $(this);
+        $this.magnificPopup({
+            delegate: 'a',
+            removalDelay: '200',
+            type: 'image',
+            fixedContentPos: false,
+            gallery: {
+                enabled: true
+            },
+            image: {
+                titleSrc: 'data-gallery-title'
+            }
+        });
+    });
+}
+
