@@ -726,3 +726,28 @@ if (contactForm) {
     });
 }
 
+/**
+ * 21. Кастомний курсор миші
+ */
+
+var customCursor = document.getElementById("cursor");
+
+if (customCursor) {
+    var cursor = document.getElementById("cursor");
+    document.addEventListener('mousemove', function (e) {
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+    });
+
+    var mouseElms = document.querySelectorAll("a, button, input, textarea, .accordion-title, .filter li");
+
+    mouseElms.forEach(function (mouseElm) {
+        mouseElm.addEventListener("mouseenter", function () {
+            cursor.classList.add("scale-cursor");
+        });
+        mouseElm.addEventListener("mouseleave", function () {
+            cursor.classList.remove("scale-cursor");
+        });
+    });
+}
+
