@@ -10,10 +10,15 @@
 
 <body class="bg-light">
     <div class="container mt-3">
-        <?php include base_path('/resources/views/cabinet/partials/flash.php') ?>
+        <?php include base_path('resources/views/cabinet/partials/flash.php') ?>
     </div>
 
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+        <?php
+        \Application\Helpers\DirectHelper::components('resources/views/cabinet/components/sidebar');
+        ?>
+
         <div class="w-100 d-flex justify-content-center">
             <?= $content ?? ''; ?>
         </div>
