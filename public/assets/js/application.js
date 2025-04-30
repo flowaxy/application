@@ -766,3 +766,37 @@ if (pageProgress.length) {
     }
 }
 
+/**
+ * 23. Слайдери Swiper
+ */
+
+// Головний слайдер портфоліо
+var swiper = new Swiper(".hero-portfolio-slider", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    // Responsive breakpoints
+    breakpoints: {
+        // when window width is >= 768px
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 30
+        },
+        // when window width is >= 992px
+        992: {
+            slidesPerView: 2,
+            spaceBetween: 40
+        },
+        // when window width is >= 1200px
+        1200: {
+            slidesPerView: 2,
+            spaceBetween: 50
+        }
+    },
+    centeredSlides: true,
+    grabCursor: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+});
+
