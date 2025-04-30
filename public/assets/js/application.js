@@ -657,3 +657,37 @@ $(".pie-chart").appear(function () {
 }, { accX: 0, accY: -10 });
 
 
+/**
+ * 19. Карта Google Maps
+ */
+
+var mapCanvas = $(".gmap");
+
+if (mapCanvas.length) {
+    var m, divId, initLatitude, initLongitude, map;
+
+    for (var i = 0; i < mapCanvas.length; i++) {
+        m = mapCanvas[i];
+
+        initLatitude = m.dataset["latitude"];
+        initLongitude = m.dataset["longitude"];
+        divId = "#" + m["id"];
+
+        map = new GMaps({
+            el: divId,
+            lat: initLatitude,
+            lng: initLongitude,
+            zoom: 16,
+            scrollwheel: false,
+            styles: [
+                // Стилізацію можна взяти з https://snazzymaps.com/editor
+            ]
+        });
+
+        map.addMarker({
+            lat: initLatitude,
+            lng: initLongitude
+        });
+    }
+}
+
