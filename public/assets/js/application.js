@@ -751,3 +751,18 @@ if (customCursor) {
     });
 }
 
+/**
+ * 22. Індикатор прокрутки сторінки (Page Scroll Progress)
+ */
+
+var pageProgress = $(".page-progress-container");
+if (pageProgress.length) {
+    window.onscroll = function () { pageScrollFunction() };
+    function pageScrollFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("pageProgress").style.width = scrolled + "%";
+    }
+}
+
