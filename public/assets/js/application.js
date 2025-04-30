@@ -82,3 +82,17 @@ else if (preloaderType === "3") {
 // Ініціалізація бібліотеки анімацій при прокручуванні (наприклад, ScrollCue)
 scrollCue.init();
 
+/**
+ * 3. Фонові зображення
+ */
+
+// Автоматичне встановлення фонових зображень з атрибута data-bg-src
+var bgImages = document.querySelectorAll(".bg-image");
+
+if (bgImages) {
+    bgImages.forEach(function (bgImage) {
+        var bgData = bgImage.getAttribute("data-bg-src");
+        bgImage.style.backgroundImage = 'url("' + bgData + '")';
+    });
+}
+
