@@ -589,3 +589,42 @@ $(".counter").appear(function () {
 
 }, { accX: 0, accY: -10 });
 
+/**
+ * 16. Акордеон (Accordion)
+ */
+
+var accordionTitles = document.querySelectorAll(".accordion-title");
+
+accordionTitles.forEach(function (accordionTitle) {
+    accordionTitle.addEventListener("click", function () {
+        var accordionList = accordionTitle.parentElement;
+        var accordionContent = accordionTitle.nextElementSibling;
+
+        if (accordionList.classList.contains("active")) {
+            accordionList.classList.remove("active");
+            accordionContent.style.maxHeight = null;
+        } else {
+            accordionList.classList.add("active");
+            if (accordionTitle.closest(".accordion").classList.contains("single-open")) {
+                var accordionItems = accordionTitle.closest(".accordion").querySelectorAll("li");
+                accordionItems.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+                accordionList.classList.add("active");
+                accordionTitle.closest(".single-open").querySelectorAll(".accordion-content").forEach(function (content) {
+                    content.style.maxHeight = "0";
+                });
+            }
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+        }
+    });
+
+    // Автоматичне розкриття активного акордеону при завантаженні
+    var accordion = accordionTitle.parentElement.closest(".accordion");
+    if (accordion.querySelector("li.active")) {
+        var accordionActiveContent = accordion.querySelector("li.active .accordion-content");
+        var accordionHeight = accordionActiveContent.scrollHeight;
+        accordionActiveContent.style.maxHeight = accordionHeight + "px";
+    }
+});
+
