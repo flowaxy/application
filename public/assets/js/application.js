@@ -557,3 +557,15 @@ if ($windowWidth > 1200) {
     }
 }
 
+/**
+ * 14. Зворотний відлік (Countdown)
+ */
+
+$(".countdown").each(function () {
+    var finalDate = $(this).attr('data-countdown');
+
+    $(this).countdown(finalDate, function (event) {
+        $(this).html(event.strftime('%D days %H:%M:%S'));
+    });
+});
+
