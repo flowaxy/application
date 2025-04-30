@@ -541,3 +541,19 @@ if ($gallery.length) {
     });
 }
 
+/**
+ * 13. Parallax ефект (ефект паралаксу при скролі)
+ */
+
+if ($windowWidth > 1200) {
+    var parallaxBg = $(".parallax");
+
+    if (parallaxBg.length) {
+        parallaxBg.each(function () {
+            $(this).parallaxie({
+                speed: 0.2
+            });
+        });
+    }
+}
+
