@@ -385,3 +385,59 @@ if (pGrid) {
     });
 }
 
+/**
+ * 9. Слайдер (Owl Carousel)
+ */
+
+var owlSlider = document.querySelector(".owl-carousel");
+
+if (owlSlider) {
+    $(".owl-carousel").each(function () {
+        var $carousel = $(this);
+
+        var $defaults = {
+            rewind: true,
+            navText: ["<i class='bi bi-arrow-left-short'></i>", "<i class='bi bi-arrow-right-short'></i>"],
+            autoHeight: true,
+            autoplayTimeout: 4000,
+            autoplaySpeed: 400,
+            autoplayHoverPause: true,
+            navSpeed: 300,
+            dotsSpeed: 300
+        }
+
+        var $options = {
+            items: $carousel.data("owl-items"),
+            margin: $carousel.data("owl-margin"),
+            loop: $carousel.data("owl-loop"),
+            center: $carousel.data("owl-center"),
+            nav: $carousel.data("owl-nav"),
+            rewind: $carousel.data("owl-rewind"),
+            dots: $carousel.data("owl-dots"),
+            autoplay: $carousel.data("owl-autoplay")
+        }
+
+        var $responsive = {
+            responsive: {
+                0: {
+                    items: $carousel.data("owl-xs")
+                },
+                576: {
+                    items: $carousel.data("owl-sm")
+                },
+                768: {
+                    items: $carousel.data("owl-md")
+                },
+                992: {
+                    items: $carousel.data("owl-lg")
+                },
+                1200: {
+                    items: $carousel.data("owl-xl")
+                }
+            }
+        }
+
+        $carousel.owlCarousel($.extend($defaults, $options, $responsive));
+    });
+}
+
