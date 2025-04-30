@@ -456,3 +456,19 @@ if (blogMasonry) {
     });
 }
 
+/**
+ * 11. Masonry макет
+ * Вирівнює елементи в стилі сітки із плавною адаптацією
+ */
+
+var masonryGrid = document.querySelector(".masonry");
+
+if (masonryGrid) {
+    imagesLoaded(masonryGrid, function () {
+        var $masonryGrid = $(masonryGrid);
+        $masonryGrid.masonry({
+            itemSelector: '.masonry-item'
+        });
+    });
+}
+
