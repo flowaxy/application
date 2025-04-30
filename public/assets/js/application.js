@@ -343,3 +343,28 @@ if (scrollTopBtn) {
     });
 }
 
+/**
+ * 7. Портфоліо у вигляді Masonry (з фільтрацією)
+ */
+
+var pMasonry = document.querySelector(".portfolio-masonry");
+
+if (pMasonry) {
+    imagesLoaded(pMasonry, function () {
+        var pWrapper = $(".portfolio-masonry").isotope({
+            itemSelector: ".portfolio-item",
+            transitionDuration: 250
+        });
+        var filter = $(".filter ul li");
+
+        // Фільтрація елементів портфоліо
+        filter.on("click", function () {
+            var filterValue = $(this).attr("data-filter");
+            pWrapper.isotope({ filter: filterValue });
+
+            filter.removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+}
+
