@@ -628,3 +628,32 @@ accordionTitles.forEach(function (accordionTitle) {
     }
 });
 
+/**
+ * 17. Анімований прогрес-бар
+ */
+
+$(".animated-progress div").each(function () {
+    $(this).appear(function () {
+        $(this).css("width", $(this).attr("data-progress") + "%");
+    }, { accX: 0, accY: -10 })
+});
+
+
+/**
+ * 18. Кругова діаграма (Easy Pie Chart)
+ */
+
+$(".pie-chart").appear(function () {
+
+    $(this).each(function () {
+        $(this).easyPieChart({
+            lineCap: 'square',
+            onStep: function (from, to, percent) {
+                $(this.el).find('.percent').text(Math.round(percent));
+            }
+        });
+    });
+
+}, { accX: 0, accY: -10 });
+
+
