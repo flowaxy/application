@@ -368,3 +368,20 @@ if (pMasonry) {
     });
 }
 
+/**
+ * 8. Сітка портфоліо (Grid)
+ */
+
+var pGrid = document.querySelector(".portfolio-grid");
+
+if (pGrid) {
+    var mixer = mixitup('.portfolio-grid', {
+        selectors: {
+            target: '.portfolio-item'
+        },
+        animation: {
+            duration: 250
+        }
+    });
+}
+
