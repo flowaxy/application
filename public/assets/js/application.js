@@ -35,3 +35,7 @@
 
 "use strict";
 
+// Отримуємо посилання на тіло документа та ширину вікна браузера
+var body = document.body;
+var $windowWidth = $(window).width();
+
