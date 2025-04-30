@@ -800,3 +800,18 @@ var swiper = new Swiper(".hero-portfolio-slider", {
     },
 });
 
+// Біжучий текст
+var swiper = new Swiper(".sliding-text", {
+    slidesPerView: "auto",
+    spaceBetween: 70,
+    speed: 30000,
+    loop: true,
+    allowTouchMove: false,
+    autoplay: {
+        delay: 0,
+        clickable: false,
+        pauseOnMouseEnter: false,
+        disableOnInteraction: false,
+    },
+});
+
