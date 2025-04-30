@@ -300,3 +300,29 @@ if (document.querySelector(".nav-dropdown")) {
     });
 }
 
+/**
+ * 5. Повноекранне меню
+ */
+
+var fm = document.querySelector(".fullscreen-menu");
+
+if (fm) {
+    var fmToggle = document.querySelector(".fm-toggle");
+    var fmClose = document.querySelector(".fm-close");
+
+    // Відкрити меню
+    fmToggle.addEventListener("click", function () {
+        if (fm.classList.contains("fm-show")) {
+            fm.classList.remove("fm-show");
+        } else {
+            fm.classList.add("fm-show");
+        }
+    });
+
+    // Закрити меню
+    fmClose.addEventListener("click", function () {
+        fm.classList.remove("fm-show");
+        fmToggle.classList.remove("fm-toggle-hide");
+    });
+}
+
