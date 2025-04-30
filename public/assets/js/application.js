@@ -815,3 +815,18 @@ var swiper = new Swiper(".sliding-text", {
     },
 });
 
+// Біжучий текст у зворотному напрямку
+var swiper = new Swiper(".sliding-text-reverse", {
+    slidesPerView: "auto",
+    spaceBetween: 70,
+    speed: 30000,
+    loop: true,
+    allowTouchMove: false,
+    autoplay: {
+        delay: 0,
+        clickable: false,
+        pauseOnMouseEnter: false,
+        disableOnInteraction: false,
+        reverseDirection: true,
+    },
+});
