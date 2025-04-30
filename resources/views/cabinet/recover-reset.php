@@ -1,5 +1,3 @@
-<?php require base_path('resources/views/cabinet/layouts/header.php'); ?>
-
 <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
     <h2 class="mb-4 text-center">Новый пароль</h2>
 
@@ -19,5 +17,3 @@
         <button type="submit" class="btn btn-primary w-100">Сменить пароль</button>
     </form>
 </div>
-
-<?php require base_path('resources/views/cabinet/layouts/footer.php'); ?>

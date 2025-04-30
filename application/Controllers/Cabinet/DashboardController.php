@@ -13,6 +13,10 @@ class DashboardController extends BaseController
             $this->redirect('/cabinet/login');
         }
 
-        $this->view('cabinet/index');
+        // Контент для главной страницы кабинета
+        $content = $this->view('cabinet/index', [], true);
+
+        // Передаем контент в общий шаблон layout
+        $this->view('cabinet/layouts/default', ['content' => $content]);
     }
 }

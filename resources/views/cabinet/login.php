@@ -1,5 +1,3 @@
-<?php require base_path('resources/views/cabinet/layouts/header.php'); ?>
-
 <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
     <h2 class="mb-4 text-center">Вход в кабинет</h2>
 
@@ -22,5 +20,3 @@
         <a href="/cabinet/register" class="text-decoration-none">Регистрация</a>
     </div>
 </div>
-
-<?php require base_path('resources/views/cabinet/layouts/footer.php'); ?>

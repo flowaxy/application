@@ -18,17 +18,19 @@ abstract class BaseController
     protected function view(string $path, array $data = [], bool $return = false): ?string
     {
         extract($data);
-
-        ob_start(); // Начало буферизации вывода
+        // Начало буферизации вывода
+        ob_start();
         require base_path("resources/views/{$path}.php");
-        $content = ob_get_clean(); // Получаем весь вывод в переменную
+        // Получаем весь вывод в переменную
+        $content = ob_get_clean();
 
         if ($return) {
-            return $content; // Если параметр $return true, возвращаем контент
+            // Если параметр $return true, возвращаем контент
+            return $content;
         }
-
-        echo $content; // Иначе выводим контент
-
-        return null; // Возвращаем null, если не требуется возвращать контент
+        // Иначе выводим контент
+        echo $content;
+        // Возвращаем null, если не требуется возвращать контент
+        return null;
     }
 }
