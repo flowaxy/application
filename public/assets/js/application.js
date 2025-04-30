@@ -691,3 +691,38 @@ if (mapCanvas.length) {
     }
 }
 
+/**
+ * 20. Форма зворотного зв'язку (Contact Form)
+ */
+
+const contactForm = document.getElementById("contactform");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch("assets/php/contact-form.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    // Show Success Message
+                    document.getElementById("success").classList.add("show-result");
+                    // Reset the form
+                    contactForm.reset();
+                } else {
+                    // Show Error Message
+                    document.getElementById("error").classList.add("show-result");
+                }
+            })
+            .catch(error => {
+                document.getElementById("error").classList.add("show-result"); // Show Error Message
+                console.error("There was a problem with the fetch operation:", error);
+            });
+    });
+}
+
