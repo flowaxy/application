@@ -2,9 +2,17 @@
     <h2 class="mb-4 text-center">Регистрация</h2>
 
     <form action="/cabinet/register" method="POST">
+        <!-- CSRF токен -->
+        <input type="hidden" name="_csrf_token" value="<?= \Application\Core\Session::generateToken(); ?>">
+
         <div class="mb-3">
             <label for="name" class="form-label">Имя:</label>
             <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Логин:</label>
+            <input type="text" name="username" id="username" class="form-control" required>
         </div>
 
         <div class="mb-3">
