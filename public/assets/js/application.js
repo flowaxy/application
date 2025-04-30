@@ -75,3 +75,10 @@ else if (preloaderType === "3") {
     body.appendChild(preloader3);
 }
 
+/**
+ * 2. Анімації при прокрутці
+ */
+
+// Ініціалізація бібліотеки анімацій при прокручуванні (наприклад, ScrollCue)
+scrollCue.init();
+
