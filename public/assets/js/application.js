@@ -441,3 +441,18 @@ if (owlSlider) {
     });
 }
 
+/**
+ * 10. Masonry для блогу
+ */
+
+var blogMasonry = document.querySelector(".blog-masonry");
+
+if (blogMasonry) {
+    imagesLoaded(blogMasonry, function () {
+        var $blogMasonry = $(blogMasonry);
+        $blogMasonry.masonry({
+            itemSelector: '.blog-post-box'
+        });
+    });
+}
+
