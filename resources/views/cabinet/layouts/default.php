@@ -11,8 +11,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Пользовательские стили -->
-    <?php $cssPath = base_path('public/assets/css/layout.css'); ?>
-    <link href="/assets/css/layout.css?v=<?= file_exists($cssPath) ? filemtime($cssPath) : time() ?>" rel="stylesheet">
+    <?php
+    $layoutCssPath = base_path('public/assets/css/layout.css');
+    $noticeCssPath = base_path('public/assets/css/notice.css');
+    ?>
+    <link href="/assets/css/layout.css?v=<?= file_exists($layoutCssPath) ? filemtime($layoutCssPath) : time() ?>" rel="stylesheet">
+    <link href="/assets/css/notice.css?v=<?= file_exists($noticeCssPath) ? filemtime($noticeCssPath) : time() ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -64,6 +68,9 @@
 
         <!-- Bootstrap 5 JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Уведомления JS -->
+        <script src="/assets/js/notice.js"></script>
+
         <script>
             // Кнопка "Меню" (мобильные)
             const menuToggle = document.getElementById('menu-toggle');

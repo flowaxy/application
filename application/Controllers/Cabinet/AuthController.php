@@ -46,6 +46,7 @@ class AuthController extends BaseController
 
             if ($this->authService->attempt($identifier, $password)) {
                 $this->throttle->clearAttempts($identifier);
+                $this->flash('success', 'Ви успішно авторизувалися.');
                 $this->redirect('/cabinet');
                 return;
             }
