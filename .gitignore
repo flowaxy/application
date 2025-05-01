@@ -6,7 +6,7 @@ Thumbs.db
 .vscode/
 
 # Composer
-/vendor
+/vendor/
 composer.lock
 
 # Environment
@@ -19,10 +19,21 @@ composer.lock
 .osp/
 
 # Sandbox
-/public/sandbox
+/public/sandbox/
 
 # Logs
 /storage/logs/
 
-# Wiki
-/wiki/
+# Node
+node_modules/
+package-lock.json
+
+# Public assets
+/public/assets/
+
+# Other system files
+*.swp
+*.swo
+
+# Backup files
+*~
