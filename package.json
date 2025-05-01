@@ -1,0 +1,31 @@
+{
+    "name": "mvc.local",
+    "version": "1.0.0",
+    "description": "This is the development environment for the Flowaxy project.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/flowaxy/application.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/flowaxy/application/issues"
+    },
+    "homepage": "https://github.com/flowaxy/application#readme",
+    "devDependencies": {
+        "fs-extra": "^11.3.0",
+        "globby": "^14.1.0",
+        "sass": "^1.87.0",
+        "vite": "^6.3.4",
+        "vite-plugin-static-copy": "^2.3.1"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.5"
+    }
+}
