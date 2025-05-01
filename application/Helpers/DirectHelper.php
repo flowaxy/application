@@ -54,7 +54,6 @@ class DirectHelper
 
         foreach ($result as $file) {
             if (preg_match('#\.' . preg_quote($ext, '#') . '$#i', $file)) {
-                $fileCount++;
                 if ($fileCount >= $limit) break;
 
                 if (!empty($variables) && is_array($variables)) {
@@ -62,6 +61,7 @@ class DirectHelper
                 }
 
                 require $fullPath . DIRECTORY_SEPARATOR . $file;
+                $fileCount++;
             }
         }
 

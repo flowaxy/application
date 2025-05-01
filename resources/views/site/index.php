@@ -1,1 +1,1 @@
-<?= \Application\Helpers\DirectHelper::components('resources/views/site/components/homepage', 1, 6, 'php'); ?>
+<?= \Application\Helpers\DirectHelper::components('resources/views/site/components/homepage', 1, 3, 'php'); ?>
