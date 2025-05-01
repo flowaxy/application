@@ -232,6 +232,14 @@ if (document.querySelector(".nav-dropdown")) {
     navSubdropdowns.forEach(function (navSubdropdown) {
         var parentNavDropdownItem = navSubdropdown.parentNode;
         var navDropdownLink = parentNavDropdownItem.querySelector(".nav-dropdown-link");
+
+        // Если нет nav-dropdown-link — создаём фиктивный
+        if (!navDropdownLink) {
+            navDropdownLink = document.createElement("span");
+            navDropdownLink.classList.add("nav-dropdown-link", "d-none");
+            parentNavDropdownItem.insertBefore(navDropdownLink, navSubdropdown);
+        }
+
         navDropdownLink.classList.add("sd-toggle");
         parentNavDropdownItem.insertAdjacentHTML("beforeend", '<a class="nav-subdropdown-toggle" href="#"></a>');
     });
