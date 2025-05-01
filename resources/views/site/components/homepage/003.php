@@ -1,6 +1,16 @@
 <!-- Секція Портфоліо -->
 <div class="section-lg">
     <div class="container">
+
+        <!-- Заголовок секції -->
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-uppercase">
+                наші <span class="text-primary fst-italic">проєкти</span>
+            </h2>
+            <p class="text-muted">Ознайомтесь з деякими з наших останніх робіт</p>
+        </div>
+
+
         <div class="filter filter-style-3 mb-5 text-center">
             <ul>
                 <li class="active" data-filter="*">Усі</li>

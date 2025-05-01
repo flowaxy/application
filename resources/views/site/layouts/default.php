@@ -71,7 +71,7 @@ $colorCssPath = base_path('public/assets/css/color.css');
             <!-- Меню сайту -->
             <div class="header-menu">
                 <ul class="nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Посилання</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= env('APP_URL') ?>">Головна</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Випадаюче</a>
                         <ul class="nav-dropdown">
