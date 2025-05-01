@@ -1,5 +1,5 @@
 {
-    "name": "mvc.local",
+    "name": "flowaxy",
     "version": "1.0.0",
     "description": "This is the development environment for the Flowaxy project.",
     "main": "index.js",
@@ -13,7 +13,7 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "UNLICENSED",
     "bugs": {
         "url": "https://github.com/flowaxy/application/issues"
     },
@@ -21,11 +21,26 @@
     "devDependencies": {
         "fs-extra": "^11.3.0",
         "globby": "^14.1.0",
+        "postcss-url": "^10.1.3",
         "sass": "^1.87.0",
         "vite": "^6.3.4",
         "vite-plugin-static-copy": "^2.3.1"
     },
     "dependencies": {
-        "bootstrap": "^5.3.5"
+        "@fancyapps/ui": "^5.0.36",
+        "bootstrap": "^5.3.5",
+        "easy-pie-chart": "^2.1.7",
+        "font-awesome": "^4.7.0",
+        "imagesloaded": "^5.0.0",
+        "isotope-layout": "^3.0.6",
+        "jquery": "^3.7.1",
+        "jquery.appear": "^1.0.1",
+        "jquery.countdown": "^1.2.8",
+        "jquery.easing": "^1.4.1",
+        "magnific-popup": "^1.2.0",
+        "mixitup": "^3.3.2",
+        "owl.carousel": "^2.3.4",
+        "retinajs": "^2.1.3",
+        "swiper": "^11.2.6"
     }
 }
