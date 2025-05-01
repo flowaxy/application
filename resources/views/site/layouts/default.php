@@ -138,9 +138,7 @@ $colorCssPath = base_path('public/assets/css/color.css');
             <!-- Іконки соцмереж -->
             <div class="header-menu-extra">
                 <ul class="list-inline-sm">
-                    <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                    <li><a href="#"><i class="bi bi-twitter-x"></i></a></li>
-                    <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                    <li><a href="/cabinet" class="button button-sm button-white-2">Кабінет</a></li>
                 </ul>
             </div>
 
